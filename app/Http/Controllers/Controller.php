@@ -9,8 +9,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 
 /**
- * @OA\server(url="http://localhost/api"),
- * @OA\Info(title="Laravel Road", version="0.0.1")
+ * @OA\server(url="http://localhost:3000/api"),
+ * @OA\Info(title="Tools API", version="0.0.1")
  */
 
 class Controller extends BaseController

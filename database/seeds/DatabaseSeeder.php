@@ -1,6 +1,6 @@
 <?php
 
-use tagsSeeder;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        //$this->call(UsersTableSeeder::class);
         $this->call([
-            toolsSeeder::class,
             tagsSeeder::class,
+            toolsSeeder::class,
             toolsTagsSeeder::class
         ]);
     }
