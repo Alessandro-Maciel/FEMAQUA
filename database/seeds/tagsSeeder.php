@@ -25,7 +25,7 @@ class tagsSeeder extends Seeder
 
         DB::table('tags')->insert([
             'id' => 4,
-            'tag' => "collaboration",
+            'tag' => "writing",
         ]);
 
         DB::table('tags')->insert([
@@ -81,21 +81,16 @@ class tagsSeeder extends Seeder
 
         DB::table('tags')->insert([
             'id' => 14,
-            'tag' => "node",
-        ]);
-
-        DB::table('tags')->insert([
-            'id' => 15,
             'tag' => "http2",
         ]);
 
         DB::table('tags')->insert([
-            'id' => 16,
+            'id' => 15,
             'tag' => "https",
         ]);
 
         DB::table('tags')->insert([
-            'id' => 17,
+            'id' => 16,
             'tag' => "localhost",
         ]);
     }

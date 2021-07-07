@@ -88,7 +88,7 @@ class toolsTagsSeeder extends Seeder
 
         DB::table('tools_tags')->insert([
             'tool_id' => 3,
-            'tag_id' => 14,
+            'tag_id' => 9,
         ]);
 
         DB::table('tools_tags')->insert([

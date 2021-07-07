@@ -17,12 +17,40 @@ class toolsController extends Controller
      * )
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        $filter = '';
+
+        //Verifica se foi passado busca por tag na url
+        if (isset($request->tag)) {
+
+            //busca o id da tag solicitada
+            $tag = DB::table('tags')
+                ->where('tags.tag', '=', $request->tag)
+                ->select('tags.id')
+                ->get();
+
+            //Verifica se o retorno foi vazio, ou seja, nenhum registro encontrado
+            //Caso verdadeiro, retorna um array vazio com status 404
+            if ($tag->isEmpty()) {
+                $tools = [];
+                return response($tools, 404);
+            }
+
+            //Bassa o id para a variavel filter
+            $filter = $tag[0]->id;
+        }
+
         //Busca todas as ferramentas da tabela tools
         $tools = DB::table('tools')
+            ->when($filter, function ($query, $filter) {
+                return $query
+                    ->join('tools_tags', 'tools_tags.tool_id', '=', 'tools.id')
+                    ->where('tools_tags.tag_id', '=', $filter);
+            })
             ->select('tools.id', 'tools.title', 'tools.link', 'tools.description')
             ->get();
+
 
 
         // Percorre o array $tools
@@ -47,7 +75,13 @@ class toolsController extends Controller
             $tools[$key]->tags = $tags;
         }
 
+
         return response()->json($tools);
+    }
+
+
+    public function show($tag)
+    {
     }
 
 
@@ -57,10 +91,7 @@ class toolsController extends Controller
     }
 
 
-    public function show($id)
-    {
-        //
-    }
+
 
 
     public function update(Request $request, $id)
