@@ -93,17 +93,17 @@ class toolsTagsSeeder extends Seeder
 
         DB::table('tools_tags')->insert([
             'tool_id' => 3,
+            'tag_id' => 14,
+        ]);
+
+        DB::table('tools_tags')->insert([
+            'tool_id' => 3,
             'tag_id' => 15,
         ]);
 
         DB::table('tools_tags')->insert([
             'tool_id' => 3,
             'tag_id' => 16,
-        ]);
-
-        DB::table('tools_tags')->insert([
-            'tool_id' => 3,
-            'tag_id' => 17,
         ]);
     }
 }
