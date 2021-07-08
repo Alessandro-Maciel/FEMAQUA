@@ -34,12 +34,12 @@ Você também pode testar as requisições diretamente na documentação da api 
 * 4 Após a intalação, execute o comando ``` copy .env.example .env ``` no terminal.
 * 5 Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
 * 6 Abra o arquivo **.env** e sete os valores para conexão do banco de dados:
-    *DB_CONNECTION=mysql
-    *DB_HOST=127.0.0.1
-    *DB_PORT=3306
-    *DB_DATABASE=laravel
-    *DB_USERNAME=root
-    *DB_PASSWORD=
+    * DB_CONNECTION=mysql
+    * DB_HOST=127.0.0.1
+    * DB_PORT=3306
+    * DB_DATABASE=laravel
+    * DB_USERNAME=root
+    * DB_PASSWORD=
 * 7 - Setado os valores para conexão, execute o comando no terminal 
 ``` 
 php artisan migration
