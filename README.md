@@ -13,9 +13,9 @@ A documentação completa para ultilização de rotas poderá ser acessada no di
 - [MySql](https://downloads.mysql.com/archives/community/).
 - [Git - versão 2.19.2](https://git-scm.com/).
 
-O composer irá gerenciar todas as dependências necessários para executa a api.
+O composer irá gerenciar todas as dependências necessários para a execução da api.
 
-MySql é o banco de dados onde irá fazer a persistência dos dados.
+MySql é o banco de dados onde irá persistir os dados.
 
 ## Requisitos opcionais
 
@@ -30,10 +30,10 @@ Você também pode testar as requisições diretamente na documentação da api 
 
 * 1 - Clone o repositório usando o git em seu computador.
 * 2 - Abra o terminal e navegue até a pasta FEMAQUA que foi criada.
-* 3 - Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando ``` composer install ``` e aguarde o termino de instalação das dependências. 
+* 3 - Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando ``` composer install ``` e aguarde o término de instalação das dependências. 
 * 4 - Após a intalação, execute o comando ``` copy .env.example .env ``` no terminal.
-* 5 - Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato ** utf8_general_ci **.
-* 6 - Abra o arquivo ** .env ** e sete os valores para conexão do banco de dados:
+* 5 - Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
+* 6 - Abra o arquivo **.env** e sete os valores para conexão do banco de dados:
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
