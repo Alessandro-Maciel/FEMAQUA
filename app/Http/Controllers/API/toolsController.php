@@ -116,7 +116,7 @@ class toolsController extends Controller
      *            )
      *        )
      *      ),
-     *    @OA\Response(response="201", description="Ferramenta criada com sucesso"),
+     *    @OA\Response(response="201", description="Opecação bem sucedida. Ferramenta criada com sucesso"),
      *    @OA\Response(response="400", description="Sintaxe JSON inválida")
      * )
      */
@@ -191,9 +191,40 @@ class toolsController extends Controller
         );
     }
 
+    /**
+     * @OA\Delete(
+     *     tags={"/tools"},
+     *     description="Excluir ferramenta",
+     *     path="/tools/{id}",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         @OA\Schema(
+     *            type="integer"
+     *          ),
+     *         description="Realizar a exclusão pelo id da ferramenta",
+     *         required=true,
+     *       ),
+     *    @OA\Response(response="200", description="Operação bem sucedida"),
+     * )
+     */
 
 
     public function destroy($id)
     {
+        //Exclui a ferramenta
+        DB::table('tools')
+            ->where('tools.id', '=', $id)
+            ->delete();
+
+
+        //Exclui os registro da tabela de referência cruzada que tem o id da ferramenta
+        DB::table('tools_tags')
+            ->where('tool_id', '=', $id)
+            ->delete();
+
+
+
+        return response()->json("{}", 200);
     }
 }

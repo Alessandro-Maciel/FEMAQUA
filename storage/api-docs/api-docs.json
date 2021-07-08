@@ -69,10 +69,35 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Ferramenta criada com sucesso"
+                        "description": "Opecação bem sucedida. Ferramenta criada com sucesso"
                     },
                     "400": {
                         "description": "Sintaxe JSON inválida"
+                    }
+                }
+            }
+        },
+        "/tools/{id}": {
+            "delete": {
+                "tags": [
+                    "/tools"
+                ],
+                "description": "Excluir ferramenta",
+                "operationId": "4706b2f2cc973eae14cfb39981466454",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Realizar a exclusão pelo id da ferramenta",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida"
                     }
                 }
             }
