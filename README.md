@@ -11,7 +11,7 @@ A documentação completa para ultilização de rotas poderá ser acessada no di
 
 - [Composer](https://getcomposer.org/).
 - [MySql](https://downloads.mysql.com/archives/community/).
-- [Git - versão 2.19.2](https://git-scm.com/).
+- [Git](https://git-scm.com/).
 
 O composer irá gerenciar todas as dependências necessários para a execução da api.
 
