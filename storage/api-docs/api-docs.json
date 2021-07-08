@@ -36,6 +36,45 @@
                         "description": "Nenhuma ferramenta foi encontrado no banco de dados"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "/tools"
+                ],
+                "description": "Criação de nova ferramenta",
+                "operationId": "3efaf0e49bca0f4489cc82a085175e71",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "link": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {}
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ferramenta criada com sucesso"
+                    },
+                    "400": {
+                        "description": "Sintaxe JSON inválida"
+                    }
+                }
             }
         }
     },
