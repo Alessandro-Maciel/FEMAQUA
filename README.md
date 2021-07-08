@@ -24,28 +24,28 @@ Você também pode testar as requisições diretamente na documentação da api 
 
 ## Como instalar e configurar o ambiente
 
-* 1 Clone o repositório usando o git em seu computador.
-* 2 Abra o terminal e navegue até a pasta FEMAQUA que foi criada.
-* 3 Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando abaixo e aguarde o término de instalação das dependências. 
+* Clone o repositório usando o git em seu computador.
+* Abra o terminal e navegue até a pasta FEMAQUA que foi criada.
+* Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando abaixo e aguarde o término de instalação das dependências. 
 ```
  composer install 
 
 ``` 
-* 4 Após a intalação, execute o comando no terminal.
+* Após a intalação, execute os comandos abaixo no terminal:
 ``` 
 copy .env.example .env
 php artisan key:genarate 
 
 ```
-* 5 Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
-* 6 Abra o arquivo **.env** e sete os valores para conexão do banco de dados:
+* Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
+* Abra o arquivo **.env** e sete os valores para conexão do banco de dados:
     * DB_CONNECTION=mysql
     * DB_HOST=127.0.0.1
     * DB_PORT=3306
     * DB_DATABASE=laravel
     * DB_USERNAME=root
     * DB_PASSWORD=
-* 7 Setado os valores de conexão, execute os comandos no terminal:
+* Setado os valores de conexão, execute os comandos no terminal:
 ``` 
 php artisan migration
 php artisan db:seed
@@ -54,7 +54,7 @@ php artisan db:seed
 
 Os comandos acima irão criar as tabelas e popular o banco com os registros iniciais.
 
-* 8 Execute o comando abaixo para da start no serve:
+* Execute o comando abaixo para da start no serve:
 ``` 
 php artisan serve --port=3000
 
