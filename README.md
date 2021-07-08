@@ -1,69 +1,56 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Sobre a API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags construída utilizando:
 
-## About Laravel
+- [Laravel - versão 7](https://laravel.com).
+- [MySql - versão 5.7](https://www.mysql.com/).
+- [Git - versão 2.19.2](https://git-scm.com/).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A documentação completa para ultilização de rotas poderá ser acessada no diretório storage/api-docs/api-docs.json. Ou se preferir, acessando o link http://localhost:3000/api/doc após instalação.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requisitos necessários para instalação
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Composer](https://getcomposer.org/).
+- [MySql](https://downloads.mysql.com/archives/community/).
+- [Git - versão 2.19.2](https://git-scm.com/).
 
-## Learning Laravel
+O composer irá gerenciar todas as dependências necessários para executa a api.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+MySql é o banco de dados onde irá fazer a persistência dos dados.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requisitos opcionais
 
-## Laravel Sponsors
+- [Postman](https://www.postman.com/downloads/).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+O Postman é uma ferramenta que dá suporte à requisições feitas pela API, execução de testes e requisições em geral.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+Você também pode testar as requisições diretamente na documentação da api no link http://localhost:3000/api/doc após a instalão e configuração.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Como instalar e configurar o ambiente
+
+* 1 - Clone o repositório usando o git em seu computador.
+* 2 - Abra o terminal e navegue até a pasta FEMAQUA que foi criada.
+* 3 - Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando ``` composer install ``` e aguarde o termino de instalação das dependências. 
+* 4 - Após a intalação, execute o comando ``` copy .env.example .env ``` no terminal.
+* 5 - Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato ** utf8_general_ci **.
+* 6 - Abra o arquivo ** .env ** e sete os valores para conexão do banco de dados:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+* 7 - Setado os valores para conexão, execute o comando no terminal 
+``` 
+php artisan migration
+php artisan db:seed
+
+```
+
+* 8 - 
 
 ## Code of Conduct
 
