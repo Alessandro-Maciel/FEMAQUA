@@ -49,23 +49,22 @@ php artisan key:genarate
     * DB_DATABASE=laravel
     * DB_USERNAME=root
     * DB_PASSWORD=
-* 7 - Setado os valores para conexão, execute o comando no terminal 
+* 7 Setado os valores de conexão, execute os comandos no terminal:
 ``` 
 php artisan migration
 php artisan db:seed
 
 ```
 
-* 8 - 
+Os comandos acima irão criar as tabelas e popular o banco com os registros iniciais.
 
-## Code of Conduct
+* 8 Execute o comando abaixo para da start no serve:
+``` 
+php artisan serve --port=3000
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
 
-## Security Vulnerabilities
+## Testando a api
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Acesse o link http://localhost:3000/api/doc para consultar as rotas disponíveis. Você poderá consumir-las aparti da documentação ou se preferir use a ferramenta de sua preferência, como exemplo o [Postman](https://www.postman.com/downloads/).
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
