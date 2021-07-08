@@ -4,7 +4,6 @@ A aplicação é um simples repositório para gerenciar ferramentas com seus res
 
 - [Laravel - versão 7](https://laravel.com).
 - [MySql - versão 5.7](https://www.mysql.com/).
-- [Git - versão 2.19.2](https://git-scm.com/).
 
 A documentação completa para ultilização de rotas poderá ser acessada no diretório storage/api-docs/api-docs.json. Ou se preferir, acessando o link http://localhost:3000/api/doc após instalação.
 
