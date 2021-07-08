@@ -15,11 +15,25 @@
                 "tags": [
                     "/tools"
                 ],
-                "description": "list of tools",
+                "description": "Lista de ferramentas",
                 "operationId": "e270363ef10f02a66a7b29d3a9ca6358",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "filtrar ferramentas utilizando uma busca por tag",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Returns list of tools"
+                        "description": "Retorna uma lista de ferramentas"
+                    },
+                    "404": {
+                        "description": "Nenhuma ferramenta foi encontrado no banco de dados"
                     }
                 }
             }

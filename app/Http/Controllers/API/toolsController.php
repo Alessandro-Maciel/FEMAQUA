@@ -9,13 +9,23 @@ use App\Http\Controllers\Controller;
 class toolsController extends Controller
 {
     /**
-     * @OA\Get(
-     *     tags={"/tools"},
-     *     description="list of tools",
-     *     path="/tools",
-     *     @OA\Response(response="200", description="Returns list of tools")
-     * )
-     */
+    * @OA\Get(
+    *     tags={"/tools"},
+    *     description="Lista de ferramentas",
+    *     path="/tools",
+    *     @OA\Parameter(
+    *         name="tag",
+    *         in="query",
+    *         @OA\Schema(
+    *            type="string"
+    *          ),
+    *         description="filtrar ferramentas utilizando uma busca por tag",
+    *         required=false,
+    *       ),
+    *    @OA\Response(response="200", description="Retorna uma lista de ferramentas"),
+    *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados")
+    * )
+    */
 
     public function index(Request $request)
     {
@@ -76,7 +86,7 @@ class toolsController extends Controller
         }
 
 
-        return response()->json($tools);
+        return response()->json($tools, 200);
     }
 
 
