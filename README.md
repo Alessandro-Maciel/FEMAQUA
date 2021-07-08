@@ -30,8 +30,17 @@ Você também pode testar as requisições diretamente na documentação da api 
 
 * 1 Clone o repositório usando o git em seu computador.
 * 2 Abra o terminal e navegue até a pasta FEMAQUA que foi criada.
-* 3 Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando ``` composer install ``` e aguarde o término de instalação das dependências. 
-* 4 Após a intalação, execute o comando ``` copy .env.example .env ``` no terminal.
+* 3 Com o [Composer](https://getcomposer.org/) já instalado na maquina, execute o comando abaixo e aguarde o término de instalação das dependências. 
+```
+ composer install 
+ php artisan key:genarate
+ 
+``` 
+* 4 Após a intalação, execute o comando no terminal.
+``` 
+copy .env.example .env 
+
+```
 * 5 Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
 * 6 Abra o arquivo **.env** e sete os valores para conexão do banco de dados:
     * DB_CONNECTION=mysql
