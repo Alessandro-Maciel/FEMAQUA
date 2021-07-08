@@ -13,10 +13,6 @@ A documentação completa para ultilização de rotas poderá ser acessada no di
 - [MySql](https://downloads.mysql.com/archives/community/).
 - [Git](https://git-scm.com/).
 
-O composer irá gerenciar todas as dependências necessários para a execução da api.
-
-MySql é o banco de dados onde irá persistir os dados.
-
 ## Requisitos opcionais
 
 - [Postman](https://www.postman.com/downloads/).
