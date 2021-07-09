@@ -12,9 +12,10 @@ A documentação completa para ultilização de rotas poderá ser acessada no di
 - [Php](https://www.php.net/ChangeLog-7.php#7.4.16).
 - [Composer](https://getcomposer.org/download/).
 - [MySql](https://downloads.mysql.com/archives/community/).
-- [Git](https://git-scm.com/).
 
 Se preferir mais comodidate, baixe o [laragon](https://laragon.org/download/), um ambiente de desenvolvimento universal. Ele vem com todas as ferramentas acima, e se trata de um ambiente isolado e sem conflitos.
+
+- [Git](https://git-scm.com/).
 
 ## Requisitos opcionais
 
