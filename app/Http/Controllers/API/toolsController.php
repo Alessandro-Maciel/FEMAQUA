@@ -212,17 +212,16 @@ class toolsController extends Controller
 
     public function destroy($id)
     {
-        //Exclui a ferramenta
-        DB::table('tools')
-            ->where('tools.id', '=', $id)
-            ->delete();
-
 
         //Exclui os registro da tabela de referência cruzada que tem o id da ferramenta
-        DB::table('tools_tags')
-            ->where('tool_id', '=', $id)
+          DB::table('tools_tags')
+            ->where('tools_tags.tool_id', '=', $id)
             ->delete();
 
+            //Exclui a ferramenta
+           DB::table('tools')
+            ->where('tools.id', '=', $id)
+            ->delete();
 
 
         return response()->json("{}", 200);
