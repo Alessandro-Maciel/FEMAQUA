@@ -53,6 +53,9 @@ php artisan key:generate
 * Setado os valores de conexão, execute os comandos no terminal:
 ``` 
 php artisan migrate
+
+```
+``` 
 php artisan db:seed
 
 ```
