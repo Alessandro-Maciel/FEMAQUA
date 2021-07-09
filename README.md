@@ -37,6 +37,9 @@ Você também pode testar as requisições diretamente na documentação da api 
 * Após a intalação, execute os comandos abaixo no terminal:
 ``` 
 copy .env.example .env
+
+```
+``` 
 php artisan key:generate 
 
 ```
