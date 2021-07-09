@@ -11,7 +11,7 @@ class authController extends Controller
     /**
      * @OA\Post(
      *     tags={"auth"},
-     *     description="Rota para realizar o login e obter a token access",
+     *     description="Rota para realizar o login e obter o token access",
      *     path="/auth/login",
      *     @OA\RequestBody(
      *            @OA\MediaType(
@@ -24,7 +24,7 @@ class authController extends Controller
      *        )
      *      ),
      *    @OA\Response(response="200", description="sucesso, retorno do token de acesso"),
-     *    @OA\Response(response="401", description="Erro ao efetuar o login"),
+     *    @OA\Response(response="401", description="Erro, crendenciais de acesso inválido"),
      * )
      */
 
@@ -35,7 +35,7 @@ class authController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json('Não autorizado', 401);
         }
 
         return $this->respondWithToken($token);
@@ -48,6 +48,7 @@ class authController extends Controller
      *     path="/auth/logout",
      *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Sucesso"),
+     *    @OA\Response(response="401", description="O token de acesso não foi identificado"),
      * )
      */
     public function logout()

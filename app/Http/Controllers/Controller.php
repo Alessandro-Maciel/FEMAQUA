@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\server(url="http://localhost:3000/api"),
- * @OA\Info(title="Tools API", version="0.0.1"),
+ * @OA\Info(title="Tools API", version="0.0.1",description="A api é um simples repositório para gerenciar ferramentas"),
  * @OA\SecurityScheme(
  *  securityScheme="bearerAuth",
  *   type="http",

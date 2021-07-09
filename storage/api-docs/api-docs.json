@@ -2,6 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Tools API",
+        "description": "A api é um simples repositório para gerenciar ferramentas",
         "version": "0.0.1"
     },
     "servers": [
@@ -15,7 +16,7 @@
                 "tags": [
                     "auth"
                 ],
-                "description": "Rota para realizar o login e obter a token access",
+                "description": "Rota para realizar o login e obter o token access",
                 "operationId": "c388b5cc7b4f41f4892c8c9a5777ec25",
                 "requestBody": {
                     "content": {
@@ -43,7 +44,7 @@
                         "description": "sucesso, retorno do token de acesso"
                     },
                     "401": {
-                        "description": "Erro ao efetuar o login"
+                        "description": "Erro, crendenciais de acesso inválido"
                     }
                 }
             }
@@ -58,6 +59,9 @@
                 "responses": {
                     "200": {
                         "description": "Sucesso"
+                    },
+                    "401": {
+                        "description": "O token de acesso não foi identificado"
                     }
                 },
                 "security": [
@@ -91,6 +95,9 @@
                     },
                     "404": {
                         "description": "Nenhuma ferramenta foi encontrado no banco de dados"
+                    },
+                    "401": {
+                        "description": "O token de acesso não foi identificado"
                     }
                 },
                 "security": [
@@ -135,6 +142,9 @@
                     },
                     "400": {
                         "description": "Sintaxe JSON inválida"
+                    },
+                    "401": {
+                        "description": "O token de acesso não foi identificado"
                     }
                 },
                 "security": [
@@ -168,6 +178,9 @@
                     },
                     "404": {
                         "description": "Nenhuma ferramenta foi encontrado no banco de dados"
+                    },
+                    "401": {
+                        "description": "O token de acesso não foi identificado"
                     }
                 },
                 "security": [
@@ -196,6 +209,12 @@
                 "responses": {
                     "200": {
                         "description": "Operação bem sucedida"
+                    },
+                    "401": {
+                        "description": "O token de acesso não foi identificado"
+                    },
+                    "404": {
+                        "description": "A ferramenta não foi encotrada para exclusão"
                     }
                 },
                 "security": [

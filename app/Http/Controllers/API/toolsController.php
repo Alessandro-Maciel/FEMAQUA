@@ -31,7 +31,8 @@ class toolsController extends Controller
      *       ),
      *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Retorna uma lista de ferramentas"),
-     *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados")
+     *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados"),
+     *    @OA\Response(response="401", description="O token de acesso não foi identificado"),
      * )
      */
 
@@ -116,7 +117,8 @@ class toolsController extends Controller
      *       ),
      *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Retorna os detalhes da ferramenta"),
-     *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados")
+     *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados"),
+     *    @OA\Response(response="401", description="O token de acesso não foi identificado"),
      * )
      */
 
@@ -164,7 +166,8 @@ class toolsController extends Controller
      *      ),
      *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="201", description="Opecação bem sucedida. Ferramenta criada com sucesso"),
-     *    @OA\Response(response="400", description="Sintaxe JSON inválida")
+     *    @OA\Response(response="400", description="Sintaxe JSON inválida"),
+     *    @OA\Response(response="401", description="O token de acesso não foi identificado"),
      * )
      */
 
@@ -253,12 +256,21 @@ class toolsController extends Controller
      *       ),
      *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Operação bem sucedida"),
+     *    @OA\Response(response="401", description="O token de acesso não foi identificado"),
+     *    @OA\Response(response="404", description="A ferramenta não foi encotrada para exclusão"),
      * )
      */
 
 
     public function destroy($id)
     {
+        $tool = DB::table('tools')
+            ->where('tools.id', '=', $id)
+            ->count();
+
+        if ($tool <= 0) {
+            return response()->json("Ferramenta não encontrada", 404);
+        }
 
         //Exclui os registro da tabela de referência cruzada que tem o id da ferramenta
         DB::table('tools_tags')
