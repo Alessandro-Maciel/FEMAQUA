@@ -34,7 +34,7 @@ Você também pode testar as requisições diretamente na documentação da api 
 * Após a intalação, execute os comandos abaixo no terminal:
 ``` 
 copy .env.example .env
-php artisan key:genarate 
+php artisan key:generate 
 
 ```
 * Tendo instalado o mysql na sua máquina, crie uma base de dados com o nome de sua preferência. (exemplo: "api") no formato **utf8_general_ci**.
@@ -47,7 +47,7 @@ php artisan key:genarate
     * DB_PASSWORD=
 * Setado os valores de conexão, execute os comandos no terminal:
 ``` 
-php artisan migration
+php artisan migrate
 php artisan db:seed
 
 ```

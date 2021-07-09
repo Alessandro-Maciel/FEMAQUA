@@ -179,6 +179,14 @@ return [
                 ],
                 */],
             'security' => [
+
+                'bearer' => [
+                    'type' => 'http',
+                    'description' => 'Authorization token obtained from logging in.',
+                    'name' => 'Authorization',
+                    'in' => 'header',
+                    'scheme' => 'bearer',
+                ],
                 /*
                  * Examples of Securities
                 */

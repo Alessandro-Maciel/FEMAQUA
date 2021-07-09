@@ -29,6 +29,7 @@ class toolsController extends Controller
      *         description="filtrar ferramentas utilizando uma busca por tag",
      *         required=false,
      *       ),
+     *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Retorna uma lista de ferramentas"),
      *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados")
      * )
@@ -67,33 +68,78 @@ class toolsController extends Controller
             ->select('tools.id', 'tools.title', 'tools.link', 'tools.description')
             ->get();
 
-
-
         // Percorre o array $tools
         foreach ($tools as $key => $tool) {
-
-            //Busca as marcações por ferramenta
-            $tagsAll = DB::table('tools_tags')
-                ->join('tags', 'tags.id', '=', 'tools_tags.tag_id')
-                ->where('tools_tags.tool_id', '=', $tool->id)
-                ->select('tags.tag')
-                ->get();
-
-            //Cria um array vazio para armazenar as marcações
-            $tags = [];
-
-            //Percorre o array $tagsAll extraindo e armazendo a desctrição de cada uma.
-            foreach ($tagsAll as $tag) {
-                array_push($tags, $tag->tag);
-            }
-
-            //Adicona todas as marcações da ferramenta
-            $tools[$key]->tags = $tags;
+            $tools[$key]->tags = $this->buscarTags($tool);
         }
-
 
         return response()->json($tools, 200);
     }
+
+
+    private function buscarTags($tool)
+    {
+
+        //Busca as marcações da ferramenta
+        $tagsAll = DB::table('tools_tags')
+            ->join('tags', 'tags.id', '=', 'tools_tags.tag_id')
+            ->where('tools_tags.tool_id', '=', $tool->id)
+            ->select('tags.tag')
+            ->get();
+
+        //Cria um array vazio para armazenar as marcações
+        $tags = [];
+
+        //Percorre o array $tagsAll extraindo e armazendo a desctrição de cada uma.
+        foreach ($tagsAll as $tag) {
+            array_push($tags, $tag->tag);
+        }
+
+        //retorna as tags
+        return $tags;
+    }
+
+
+    /**
+     * @OA\Get(
+     *     tags={"/tools"},
+     *     description="Exibir detalhes de uma ferramenta",
+     *     path="/tools/{id}",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         @OA\Schema(
+     *            type="integer"
+     *          ),
+     *         description="Realizar busca pelo id da ferramenta",
+     *         required=true,
+     *       ),
+     *    security={{"bearerAuth":{}}},
+     *    @OA\Response(response="200", description="Retorna os detalhes da ferramenta"),
+     *    @OA\Response(response="404", description="Nenhuma ferramenta foi encontrado no banco de dados")
+     * )
+     */
+
+
+    public function show($id)
+    {
+        $tool = DB::table('tools')
+            ->where('tools.id', '=', $id)
+            ->select('tools.id', 'tools.title', 'tools.link', 'tools.description')
+            ->get();
+
+        //Verifica se o retorno foi vazio, ou seja, nenhum registro encontrado
+        //Caso verdadeiro, retorna um array vazio com status 404
+        if ($tool->isEmpty()) {
+            return response('Nenhum registro foi encontrado', 404);
+        }
+
+        $tool[0]->tags = $this->buscarTags($tool[0]);
+
+        return response()->json($tool[0], 200);
+    }
+
+
 
     /**
      * @OA\Post(
@@ -116,11 +162,11 @@ class toolsController extends Controller
      *            )
      *        )
      *      ),
+     *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="201", description="Opecação bem sucedida. Ferramenta criada com sucesso"),
      *    @OA\Response(response="400", description="Sintaxe JSON inválida")
      * )
      */
-
 
     public function store(Request $request)
     {
@@ -205,6 +251,7 @@ class toolsController extends Controller
      *         description="Realizar a exclusão pelo id da ferramenta",
      *         required=true,
      *       ),
+     *    security={{"bearerAuth":{}}},
      *    @OA\Response(response="200", description="Operação bem sucedida"),
      * )
      */
@@ -214,12 +261,12 @@ class toolsController extends Controller
     {
 
         //Exclui os registro da tabela de referência cruzada que tem o id da ferramenta
-          DB::table('tools_tags')
+        DB::table('tools_tags')
             ->where('tools_tags.tool_id', '=', $id)
             ->delete();
 
-            //Exclui a ferramenta
-           DB::table('tools')
+        //Exclui a ferramenta
+        DB::table('tools')
             ->where('tools.id', '=', $id)
             ->delete();
 

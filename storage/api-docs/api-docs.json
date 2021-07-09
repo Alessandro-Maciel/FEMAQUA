@@ -10,6 +10,63 @@
         }
     ],
     "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Rota para realizar o login e obter a token access",
+                "operationId": "c388b5cc7b4f41f4892c8c9a5777ec25",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "sucesso, retorno do token de acesso"
+                    },
+                    "401": {
+                        "description": "Erro ao efetuar o login"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Sair do login",
+                "operationId": "01860934654856fdd10b21c4bbacceb7",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/tools": {
             "get": {
                 "tags": [
@@ -35,7 +92,12 @@
                     "404": {
                         "description": "Nenhuma ferramenta foi encontrado no banco de dados"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -74,10 +136,46 @@
                     "400": {
                         "description": "Sintaxe JSON inválida"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/tools/{id}": {
+            "get": {
+                "tags": [
+                    "/tools"
+                ],
+                "description": "Exibir detalhes de uma ferramenta",
+                "operationId": "0207264489549630a33152d9563d3343",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Realizar busca pelo id da ferramenta",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna os detalhes da ferramenta"
+                    },
+                    "404": {
+                        "description": "Nenhuma ferramenta foi encontrado no banco de dados"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "/tools"
@@ -99,11 +197,31 @@
                     "200": {
                         "description": "Operação bem sucedida"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
-    "security": [
-        []
-    ]
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": {
+        "bearer": {
+            "type": "http",
+            "description": "Authorization token obtained from logging in.",
+            "name": "Authorization",
+            "in": "header",
+            "scheme": "bearer"
+        },
+        "0": []
+    }
 }

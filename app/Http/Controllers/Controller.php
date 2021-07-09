@@ -11,6 +11,11 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\server(url="http://localhost:3000/api"),
  * @OA\Info(title="Tools API", version="0.0.1"),
+ * @OA\SecurityScheme(
+ *  securityScheme="bearerAuth",
+ *   type="http",
+ *    scheme="bearer"
+ * )
  */
 
 class Controller extends BaseController
