@@ -4,7 +4,7 @@ info:
   description: 'A api é um simples repositório para gerenciar ferramentas'
   version: 1.2.0
 servers:
-  - url: "http://ec2-18-117-140-231.us-east-2.compute.amazonaws.com:3000/api"
+  - url: http://ec2-18-117-140-231.us-east-2.compute.amazonaws.com:3000/api
   - url: 'http://localhost:3000/api'
 paths:
   /auth/login:
@@ -29,6 +29,19 @@ paths:
       responses:
         '200':
           description: 'sucesso, retorno do token de acesso'
+          content:
+            application/json:
+              schema:
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZWMyLTE4LTExNy0xNDAtMjMxLnVzLWVhc3QtMi5jb21wdXRlLmFtYXpvbmF3cy5jb206MzAwMC9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTY1MDMwMjQ2OCwiZXhwIjoxNjUwMzA2MDY4LCJuYmYiOjE2NTAzMDI0NjgsImp0aSI6InRkQkFYZ2x0WjQzV1lDazgiLCJzdWIiOiIxIiwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.v3g2a6yfK8NkIAXv4h_BtVhD0KIuibQyEfv1KKFfl6Y
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
         '401':
           description: 'Erro, crendenciais de acesso inválido'
   /auth/logout:
@@ -40,6 +53,13 @@ paths:
       responses:
         '200':
           description: Sucesso
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: Successfully logged out
         '401':
           description: 'O token de acesso não foi identificado'
       security:
@@ -62,6 +82,33 @@ paths:
       responses:
         '200':
           description: 'Retorna uma lista de ferramentas'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Notion,
+                    link:
+                      type: string
+                      example: https://notion.so
+                    description:
+                      type: string
+                      example:  All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ,
+                    tags:
+                      type: array
+                      example:
+                        - organization,
+                        - planning,
+                        - collaboration,
+                        - writing,
+                        - calendar
         '404':
           description: 'Nenhuma ferramenta foi encontrado no banco de dados'
         '401':
@@ -92,6 +139,24 @@ paths:
       responses:
         '201':
           description: 'Opecação bem sucedida. Ferramenta criada com sucesso'
+          content:
+            application/json:
+              schema:
+                properties:
+                  title:
+                    type: string
+                  link:
+                    type: string
+                  description:
+                    type: string
+                  tags:
+                    type: array
+                    example:
+                        - api
+                  id:
+                    type: integer
+                    example: 6
+
         '400':
           description: 'Sintaxe JSON inválida'
         '401':
@@ -116,6 +181,30 @@ paths:
       responses:
         '200':
           description: 'Retorna os detalhes da ferramenta'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: Notion,
+                  link:
+                    type: string
+                    example: https://notion.so
+                  description:
+                    type: string
+                    example:  All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ,
+                  tags:
+                    type: array
+                    example:
+                      - organization,
+                      - planning,
+                      - collaboration,
+                      - writing,
+                      - calendar
         '404':
           description: 'Nenhuma ferramenta foi encontrado no banco de dados'
         '401':
