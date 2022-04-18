@@ -50,7 +50,7 @@ services:
         volumes:
             - ./storage/api-docs:/usr/share/nginx/html/swagger
         environment:
-            API_URL: swagger/api-docs.json
+            API_URL: swagger/api.yaml
 networks:
     sail:
         driver: bridge
