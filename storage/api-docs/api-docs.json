@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/api"
+            "url": "http://ec2-18-188-249-219.us-east-2.compute.amazonaws.com:3000/api"
         }
     ],
     "paths": {
@@ -17,7 +17,7 @@
                     "auth"
                 ],
                 "description": "Rota para realizar o login e obter o token access",
-                "operationId": "c388b5cc7b4f41f4892c8c9a5777ec25",
+                "operationId": "1ff9c65c5cd1a8e0786e318eed856972",
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -55,7 +55,7 @@
                     "auth"
                 ],
                 "description": "Sair do login",
-                "operationId": "01860934654856fdd10b21c4bbacceb7",
+                "operationId": "eae6a8251a6469bbabe454860f64cf37",
                 "responses": {
                     "200": {
                         "description": "Sucesso"
@@ -77,7 +77,7 @@
                     "/tools"
                 ],
                 "description": "Lista de ferramentas",
-                "operationId": "e270363ef10f02a66a7b29d3a9ca6358",
+                "operationId": "264c3c6aedb3041811e477208fd9c1e6",
                 "parameters": [
                     {
                         "name": "tag",
@@ -111,7 +111,7 @@
                     "/tools"
                 ],
                 "description": "Criação de nova ferramenta",
-                "operationId": "3efaf0e49bca0f4489cc82a085175e71",
+                "operationId": "cda5061c587af842ea863e7cf6092ae2",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -160,7 +160,7 @@
                     "/tools"
                 ],
                 "description": "Exibir detalhes de uma ferramenta",
-                "operationId": "0207264489549630a33152d9563d3343",
+                "operationId": "92cd7623847e952ce2fb0773506e201f",
                 "parameters": [
                     {
                         "name": "id",
@@ -194,7 +194,7 @@
                     "/tools"
                 ],
                 "description": "Excluir ferramenta",
-                "operationId": "4706b2f2cc973eae14cfb39981466454",
+                "operationId": "b877cf3ba4318416dc4bb99ce08a57d8",
                 "parameters": [
                     {
                         "name": "id",
@@ -240,7 +240,6 @@
             "name": "Authorization",
             "in": "header",
             "scheme": "bearer"
-        },
-        "0": []
+        }
     }
 }

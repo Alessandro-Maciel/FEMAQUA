@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 
 
-class toolsController extends Controller
+class ToolsController extends Controller
 {
     /**
      * @OA\Get(
